@@ -1,0 +1,67 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+
+namespace InsertSort
+{
+    class Program
+    {
+        static void InsertSort( ref int[] arr,int n)
+        {
+            
+            short p1 = 1;
+            for (int j = 0; j < n-1 ; j++)
+            {
+               int  i = p1;
+                while (arr[i] < arr[i - 1] )
+                {
+                    int temp = arr[i];
+                    arr[i] = arr[i - 1];
+                    arr[i - 1] = temp;
+                    i--;
+                    if (i == 0)
+                        break;
+                }
+                p1++;
+            }
+        }
+
+     
+
+        static void Main(string[] args)
+        {
+            int n;
+
+            Console.Write("Input array length: ");
+            n= Convert.ToInt32(Console.ReadLine());
+
+            int[] arr = new int[n];
+
+            Console.WriteLine("Input element sequence:");
+            for (int i = 0; i < n; i++)
+            {
+                arr[i] = Convert.ToInt32(Console.ReadLine());
+            }
+
+            InsertSort(ref arr, n);
+
+            Console.BackgroundColor = ConsoleColor.DarkBlue;
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+
+            Console.WriteLine("Sorted array: ");
+
+            for (int i = 0; i < n; i++)
+            {
+                Console.Write("  {0}", arr[i]);
+            }
+
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.White;
+
+            Console.ReadKey();
+
+        }
+    }
+}
